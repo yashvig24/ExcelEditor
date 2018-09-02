@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Day Zero</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link href="node_modules/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.3/jquery.csv.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jexcel/1.5.0/js/jquery.jexcel.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jexcel/1.5.0/css/jquery.jexcel.min.css" type="text/css" crossorigin="anonymous" />
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src = "scripts/app.js"></script>
+    <script src = "components/editor.ctr.js"></script>
+    <script src = "directive/directive.js"></script>
+    <script src = "scripts/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+    <script src="https://cdn.rawgit.com/Gmousse/dataframe-js/master/dist/dataframe.js"></script>
+</head>
+
+<body ng-app = "ngEditor" ng-controller="editorCtrl">
+
+    <md-sidenav md-component-id = "left" mode="side" class="app-sidenav">
+            <md-card class = "dropdown">
+                <md-input-container>
+                    <label>Select Your Market</label>
+                    <md-select ng-model="selectedMarket" ng-change = "populateTable(this.selectedMarket)">
+                        <md-option ng-value="market" ng-repeat="market in marketArr">{{ market }}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button class="md-fab md-primary">
+                    <md-icon class="mdi mdi-plus">
+                    </md-icon>
+                    <input type="file" id = "addMarket" class = "inv" webkitdirectory mozdirectory custom-on-change="addMarket"/>
+                </md-button>
+            </md-card>
+    
+            <md-card class = "dropdown">
+                <md-input-container>
+                    <label>Select Your Table</label>
+                    <md-select ng-model="selectedTable" ng-change = "displayTable(this.selectedTable.table_nme)" >
+                        <md-option ng-value = "table" ng-repeat = "table in tables">{{ table.table_nme }}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button class="md-fab md-primary">
+                    <md-icon class="mdi mdi-plus">
+                    </md-icon>
+                    <input type="file" id = "addTable" class = "inv" custom-on-change="addTable(this.file)"/>
+                </md-button>
+            </md-card>     
+     </md-sidenav>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h1>nMarket Day Zero</h1>
+        </div>
+    </md-toolbar>
+    <div class = "mainContainer">
+       
+        <div id="table-container">
+            <md-button md-icon-button ng-click="toggleSideNav()" class = "tools">
+                <md-icon class="mdi mdi-menu"></md-icon>
+            </md-button>￼
+            <md-button id= "saveTable" ng-click="saveChanges()" class = "tools">
+                <md-icon class="mdi mdi-check">
+                </md-icon>
+            </md-button>
+            <md-button id= "saveTable" ng-click = "download()" class = "tools">
+                <md-icon class="mdi mdi-download">
+                </md-icon>
+            </md-button>
+            <md-input-container class = "sel tools">
+                <label>Enter SEL number</label>
+                <input type="text" ng-model="selNum">
+              </md-input-container>
+            <md-card id="current-table">
+
+            </md-card>
+        </div>
+    </div>
+    
+</body>
+</html>

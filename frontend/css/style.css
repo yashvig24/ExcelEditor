@@ -1,0 +1,100 @@
+html, body {
+    font-size: 1.1rem;
+    overflow: auto;
+    height: auto;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0px;
+    overflow: auto;
+    height: 100vh;
+    margin:0;
+    padding:0;
+}
+
+.md-toolbar-tools {
+    font-size: 30px;
+}
+
+md-button {
+    position: absolute; 
+    align-content: center;
+}
+
+md-icon {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.cards-container {
+    
+}
+
+md-sidenav {
+    width: 45%;
+    background-color: rgb(214, 227, 233);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-flow: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    margin-left: 0px;
+    padding-top: 30px;
+}
+
+#table-container {
+    width: 100%;
+    background-color: rgb(228, 248, 241);
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#current-table {
+    overflow: auto;
+    height: 600px;
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 25px;
+    margin: 25px;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 250px;
+}
+
+md-toolbar {
+    padding: 15px;
+}
+
+md-select {
+    width: 250px;
+}
+
+md-input-container.sel {
+    margin: 0px;
+    position: absolute;
+    top: 105px;
+    right: 15px;
+    padding: 0px;
+}
+
+.tools {
+    margin-top: 10px;
+}
+
+.inv {
+    opacity: 0;
+    width: 20px;
+}
+
+td {
+    width: 275px;
+}

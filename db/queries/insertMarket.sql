@@ -1,0 +1,1 @@
+INSERT INTO markets(market_nme) VALUES ({});

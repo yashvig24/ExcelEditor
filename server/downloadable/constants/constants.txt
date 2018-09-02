@@ -1,0 +1,36 @@
+--------------------------------------------------------------------------------
+-- Copyright 2018 ABB Inc. All Rights Reserved.
+-- Confidential and Proprietary.
+
+SET SERVEROUTPUT ON;
+SET DEFINE OFF;
+
+PROMPT
+PROMPT {}
+PROMPT
+
+DECLARE
+   lc_sysdate               CONSTANT DATE             := SYSDATE;
+   lc_user_id               CONSTANT NUMBER           := -10;
+   lc_high_dt               CONSTANT DATE             := TO_DATE ('31-DEC-4000', 'DD-MON-YYYY');
+   lc_low_dt                CONSTANT DATE             := TO_DATE ('01-Jan-1900', 'DD-MON-YYYY');
+
+   lv_count                                           NUMBER;
+{}
+   BEGIN
+      SAVEPOINT  Before_script;
+      
+{}
+   COMMIT; 
+
+   DBMS_OUTPUT.PUT_LINE('{}: End.'); 
+
+EXCEPTION
+   WHEN OTHERS THEN
+      ROLLBACK TO Before_script;
+      DBMS_OUTPUT.put_line('{}: SQLERRM = ['|| SQLERRM || ']. ERROR_BACKTRACE = [' || DBMS_UTILITY.format_error_backtrace);
+END;
+/
+PROMPT
+PROMPT {}: END
+PROMPT
